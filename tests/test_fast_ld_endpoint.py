@@ -10,9 +10,10 @@ from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parent.parent   # bundle root (parent of server_turn11c_ld_fast/)
-sys.path.insert(0, str(ROOT / "server_turn11c_ld_fast"))
-sys.path.insert(0, str(ROOT / "engine_fast_ld"))
+ROOT = Path(__file__).resolve().parent.parent   # repo root (parent of server/, engines/, wrappers/)
+sys.path.insert(0, str(ROOT / "server"))
+sys.path.insert(0, str(ROOT / "wrappers"))
+sys.path.insert(0, str(ROOT / "tests"))
 
 from fast_ld_endpoint import (
     FastLDReq, _cache_key, _default_triangle_assign, _shape_response,
@@ -21,12 +22,12 @@ from fast_ld_endpoint import (
 from lazy_windows_json import WindowsJsonCache
 from test_fast_ld import make_synthetic_windows_json, make_synthetic_dosage
 
-FAST_LD_BIN = ROOT / "engine_fast_ld" / "fast_ld"
-BUILD_WIN_SCRIPT = ROOT / "engine_fast_ld" / "build_windows_json.py"
+FAST_LD_BIN = ROOT / "engines" / "fast_ld"
+BUILD_WIN_SCRIPT = ROOT / "wrappers" / "build_windows_json.py"
 
 if not FAST_LD_BIN.exists():
     sys.exit(
-        f"fast_ld binary not built. From {ROOT}/engine_fast_ld/ run `make`,\n"
+        f"fast_ld binary not built. From {ROOT}/engines/ run `make`,\n"
         f"or set FAST_LD_BIN explicitly. Expected at: {FAST_LD_BIN}")
 
 

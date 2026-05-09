@@ -10,7 +10,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-FAST_LD = ROOT / "src" / "fast_ld"
+FAST_LD = ROOT / "engines" / "fast_ld"
 
 
 def make_realistic_dataset(td, n_samples, n_windows, snps_per_window, step,

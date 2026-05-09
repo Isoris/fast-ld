@@ -30,7 +30,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-FAST_LD = ROOT / "src" / "fast_ld"
+FAST_LD = ROOT / "engines" / "fast_ld"
 assert FAST_LD.exists(), f"binary not built: {FAST_LD}"
 
 MAX_GROUPS = 4

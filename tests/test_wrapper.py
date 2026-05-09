@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "python"))
+sys.path.insert(0, str(ROOT / "wrappers"))
 
 from fast_ld_wrapper import compute_ld
 
@@ -14,7 +14,7 @@ from fast_ld_wrapper import compute_ld
 sys.path.insert(0, str(ROOT / "tests"))
 from test_fast_ld import (make_synthetic_windows_json, make_synthetic_dosage)
 
-FAST_LD = ROOT / "src" / "fast_ld"
+FAST_LD = ROOT / "engines" / "fast_ld"
 
 
 def test_wrapper_end_to_end():

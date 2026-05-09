@@ -11,23 +11,23 @@ windows-JSON cache. Replaces `server_turn11a_ld/` (which wrapped ngsLD).
 | `lazy_windows_json.py` | Per-chromosome `<chrom>.windows.json` cache. Builds on first request, rebuilds when atlas JSON or sites file is newer. |
 | `test_fast_ld_endpoint.py` | 11 tests including a real end-to-end through the actual fast_ld binary. |
 
-Run tests: `python3 test_fast_ld_endpoint.py` (requires the engine
-built — see `../engine_fast_ld/`).
+Run tests: `python3 ../tests/test_fast_ld_endpoint.py` (requires the engine
+built — see `../engines/`).
 
 ## Drop-in pattern
 
 Copy the two `.py` files into your `popstats_server/` directory
 alongside `popstats_server.py`. They're standalone — only `numpy`,
 `fastapi`, `pydantic` (already in `server_turn1/requirements.txt`)
-plus `fast_ld_wrapper.py` from `engine_fast_ld/`.
+plus `fast_ld_wrapper.py` from `wrappers/`.
 
 ```
 popstats_server/
 ├── popstats_server.py
 ├── fast_ld_endpoint.py     ← THIS
 ├── lazy_windows_json.py    ← THIS
-├── fast_ld_wrapper.py      ← from engine_fast_ld/
-├── build_windows_json.py   ← from engine_fast_ld/
+├── fast_ld_wrapper.py      ← from wrappers/
+├── build_windows_json.py   ← from wrappers/
 ├── ld_endpoint.py          ← turn 11a, can stay if you want a ngsLD fallback
 └── ...
 ```
@@ -98,9 +98,9 @@ engines:
   fast_ld:         /scratch/lt200308-agbsci/.../tools/fast_ld
 ```
 
-The `build_windows_json_path` should point to the script in the
-sibling `engine_fast_ld/build_windows_json.py`. The `fast_ld` engine
-path should point to the compiled binary.
+The `build_windows_json_path` should point to the script in
+`wrappers/build_windows_json.py`. The `fast_ld` engine
+path should point to the compiled binary at `engines/fast_ld`.
 
 ## Verify
 
